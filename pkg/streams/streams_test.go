@@ -6,12 +6,16 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+var (
+	Processor = &Streams{}
+)
+
 func TestIntStreamGenerator(t *testing.T) {
 	assert := assert.New(t)
 
 	arrange := []int{1, 2, 3, 4, 5, 6, 7}
 
-	stream := CreateIntStream(arrange)
+	stream := Processor.CreateIntStream(arrange)
 
 	assert.Equal(7, len(stream), "Expected stream length to be 7")
 }
@@ -21,7 +25,7 @@ func TestStringStreamGenerator(t *testing.T) {
 
 	arrange := []string{"1", "2", "3", "4", "5"}
 
-	stream := CreateStringStream(arrange)
+	stream := Processor.CreateStringStream(arrange)
 	assert.Equal(5, len(stream), "Expected stream length to be 5")
 }
 func TestStreamGenerator(t *testing.T) {
@@ -32,7 +36,7 @@ func TestStreamGenerator(t *testing.T) {
 		arranged[k] = i
 	}
 
-	stream := CreateInterfaceStream(arranged)
+	stream := Processor.CreateInterfaceStream(arranged)
 
 	assert.Equal(5, len(stream), "Expected stream length to be 5")
 }
